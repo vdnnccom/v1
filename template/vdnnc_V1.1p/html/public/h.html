@@ -1,0 +1,43 @@
+<div class="index-header" id="topback">
+	<div class="header-bg">
+		<div class="logozone">
+
+			<!--搜索部分 start-->
+			<div class="wrap1200 logo">
+				<a href="/" class="fl"><img src="//{$maccms.site_url}/{$maccms.site_logo}" class="logoImage"></a>
+				<div id="mod-search1">
+					<div class="searchbox">
+						<form action="{:mac_url('vod/search')}" method="get">
+						<div class="searchbox-inner">
+							<input type="text" name="{$param.wd}" placeholder="找书" class="searchinput">
+							<i class="search-icon"></i>
+							<input type="submit" value="" class="searchbtn" style="background-color:#333333">
+							<span class="loadIcon"></span>
+						</div>
+						</form>
+					</div>
+				</div>
+				<div class="mybookshelf fr">
+					<i class="user"></i>
+					<a href="#">登录</a>
+					<a href="#">注册</a>
+				</div>
+                	<a href="#" class="mybookshelf fr"> <i></i>我的收藏</a>
+			</div>
+			<!--搜索部分 end-->
+			<!--导航 start-->
+		</div>
+	</div>
+	<div class="firstnav">
+		<ul>
+			<li class="curr"><a href="/">首页</a></li>
+			{maccms:type ids="parent" order="asc" by="sort"}
+			<li ><a href="{:mac_url_type($vo)}">{$vo.type_name}</a></li>
+			{/maccms:type}			
+			<li ><a href="http://demo.kyxscms.com/all.html">书库</a></li>
+			<li ><a href="http://demo.kyxscms.com/lists/41.html">排行</a></li>
+			<li ><a href="http://demo.kyxscms.com/lists/31.html">文章</a></li>
+					</ul>
+	</div>
+	<!--导航 end-->
+</div>

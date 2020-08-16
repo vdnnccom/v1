@@ -1,0 +1,294 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+	    <meta name="keywords" content="{$maccms.site_keywords}">
+	    <meta name="description" content="{$maccms.site_description}">
+	    <title>{$maccms.site_name}</title>
+	    {include file="public/in"}
+    </head>
+	<body>
+		{include file="public/h"}
+		<div class="body-bg">
+		    <div class="wrap">
+		        <!-- start main -->
+		        <div class="containerbox">
+		            <div class="block10"></div>
+		            <!--block1 start-->
+		            <div class="wrap1200">
+			            <div class="boxcont fl">
+			            	<ul class="boxlist">
+								{maccms:type ids="" order="asc" by="sort" id="vo1" key="key1"}
+			            			<li>
+			            			<a class="title" href="{:mac_url_type($vo1)}" target="_blank"><em>{$vo1.type_name}</em></a>
+									
+			            			<p class="clearfixer">
+									{maccms:type parent="'.$vo1['type_id'].'" order="asc" by="sort" id="vo2" key="key2"}
+			            			<a class="gray" href="{:mac_url_type($vo2)}" target="_blank">{$vo2.type_name}</a>
+									{/maccms:type}
+			            			</p>
+									</li>
+								{/maccms:type}	
+									
+			            	</ul>
+			            </div>
+			            <div class="w950 fr">
+			            	<div class="mod-banner">
+			            		<div class="banner-slide">
+			            			<div class="slideBox">
+										
+										
+										
+										{maccms:vod num="4" level="9" order="desc" by="time"}
+			            					
+			            				<a class="slider-film" href="{:mac_url_vod_detail($vo)}" target="_blank" style="display: none;">
+			            				<img data-original="{:mac_url_img($vo.vod_pic)}" src="{:mac_url_img($vo.vod_pic)}">
+										</a>	
+											
+			            				{/maccms:vod}	
+											</div>
+			            			
+									<div class="slide-point">
+									
+			            					<li class="slide-point-Focus"></li>
+			            					<li class="slide-point-Focus"></li>
+			            					<li class="slide-point-Focus"></li>
+			            					<li class="slide-point-Focus"></li>
+			            					
+			            			</div>
+									
+			            			<button class="prev" style="opacity: 1; display: none;"></button>
+			            			<button class="next" style="opacity: 1; display: none;"></button>
+			            		</div>
+			            	</div>
+			            </div>
+		            </div>
+		            <div class="block10"></div>
+		            <div class="wrap1200">
+		            	<div class="goodbookbox">
+		            		<span class="titmenu">好书推荐</span>
+		            		<div class="goodbook-tabcont">
+		            			<div>
+		            				<ul class="goodbook-b">
+									{maccms:vod num="5" level="1" order="desc" by="time"}
+		            					<dl class="book-block">
+		            						<dt>
+		            						<a href="{:mac_url_vod_detail($vo)}" target="_blank">
+		            						<img class="lazyimg" data-original="{:mac_url_img($vo.vod_pic)}" src="{:mac_url_img($vo.vod_pic)}">
+											</a>
+		            						</dt>
+		            						<dd>
+		            						<a href="{:mac_url_vod_detail($vo)}" class="book-name" target="_blank">{$vo.vod_name}</a>
+		            						<span class="book-info">
+		            						{$vo.vod_blurb}
+											</span>
+		            						<span class="book-author">
+		            						作者：{$vo.vod_director|mac_url_create='director'}
+		            						</span>
+		            						</dd>
+		            					</dl>
+				            		{/maccms:vod}						            					            					
+				            			</ul>
+				            			<ul class="goodbook-b">
+				            			</ul>
+		            			</div>
+		            		</div>
+		            	</div>
+		            </div>
+		            <div class="block10"></div>
+		            
+		            <div class="wrap1200 page-ad">
+		            	<div class="slideBox">
+		            		<a href="#" target="_blank" class="slider-film">
+		            			<img class="lazyimg" data-original="{$maccms.path_tpl}src/1120x100.png" src="">
+		            		</a>
+		            	</div>
+		            </div>
+		            <div class="block10"></div>
+		            <div class="rank-box">
+		            	<div class="rank-list">
+		            		<span class="titmenu">日排行榜</span>
+		            		<ul class="rank-1">
+							{maccms:vod num="1" start="" order="desc" by="score"}
+		            			<li class="top topred">
+		            			<span class="num">{$key}</span>
+		            			<dl class="book-block">
+		            			<dt>
+		            				<a href="{:mac_url_vod_detail($vo)}" target="_blank">
+		            				<img class="lazyimg" data-original="{:mac_url_img($vo.vod_pic)}" src="{:mac_url_img($vo.vod_pic)}">
+									</a>
+		            			</dt>
+		            			<dd>
+		            			<a href="{:mac_url_vod_detail($vo)}" target="_blank" class="book-name">{$vo.vod_name}</a>
+		            			</dd>
+		            			</dl>
+		            			</li>
+		            		{/maccms:vod}
+							{maccms:vod num="9" start="" order="desc" by="score"}
+		            			<li class="topred">
+		            				<span class="num">{$key}</span>
+		            				<a class="book-list-f" href="{:mac_url_vod_detail($vo)}" target="_blank">{$vo.vod_name}</a>
+		            			</li>
+		            		{/maccms:vod}
+		            			</ul>
+		            		<a href="http://demo.kyxscms.com/other/rank_hits/order/hits_day.html" target="_blank" class="more">查看更多&gt;&gt;</a>
+		            	</div>
+		            	<div class="rank-list">
+		            		<span class="titmenu">周排行榜</span>
+		            		<ul class="rank-1">
+							{maccms:vod num="1" start="" order="desc" by="hits_week"}
+		            			<li class="top topred">
+		            			<span class="num">{$key}</span>
+		            			<dl class="book-block">
+		            			<dt>
+		            				<a href="{:mac_url_vod_detail($vo)}" target="_blank">
+		            				<img class="lazyimg" data-original="{:mac_url_img($vo.vod_pic)}" src="{:mac_url_img($vo.vod_pic)}">
+									</a>
+		            			</dt>
+		            			<dd>
+		            			<a href="{:mac_url_vod_detail($vo)}" target="_blank" class="book-name">{$vo.vod_name}</a>
+		            			</dd>
+		            			</dl>
+		            			</li>
+		            		{/maccms:vod}
+							{maccms:vod num="9" start="" order="desc" by="hits_week"}
+		            			<li class="topred">
+		            				<span class="num">{$key}</span>
+		            				<a class="book-list-f" href="{:mac_url_vod_detail($vo)}" target="_blank">{$vo.vod_name}</a>
+		            			</li>
+		            		{/maccms:vod}
+		            			</ul>
+		            		<a href="http://demo.kyxscms.com/other/rank_hits/order/hits_week.html" target="_blank" class="more">查看更多&gt;&gt;</a>
+		            	</div>
+		            	<div class="rank-list">
+		            		<span class="titmenu">月排行榜</span>
+		            		<ul class="rank-1">
+							{maccms:vod num="1" start="" order="desc" by="hits_month"}
+		            			<li class="top topred">
+		            			<span class="num">{$key}</span>
+		            			<dl class="book-block">
+		            			<dt>
+		            				<a href="{:mac_url_vod_detail($vo)}" target="_blank">
+		            				<img class="lazyimg" data-original="{:mac_url_img($vo.vod_pic)}" src="{:mac_url_img($vo.vod_pic)}">
+									</a>
+		            			</dt>
+		            			<dd>
+		            			<a href="{:mac_url_vod_detail($vo)}" target="_blank" class="book-name">{$vo.vod_name}</a>
+		            			</dd>
+		            			</dl>
+		            			</li>
+		            		{/maccms:vod}
+							{maccms:vod num="9" start="" order="desc" by="hits_month"}
+		            			<li class="topred">
+		            				<span class="num">{$key}</span>
+		            				<a class="book-list-f" href="{:mac_url_vod_detail($vo)}" target="_blank">{$vo.vod_name}</a>
+		            			</li>
+		            		{/maccms:vod}
+		            			</ul>
+		            		<a href="http://demo.kyxscms.com/other/rank_hits/order/hits_month.html" target="_blank" class="more">查看更多&gt;&gt;</a>
+		            	</div>
+		            	<div class="rank-list">
+		            		<span class="titmenu">总榜</span>
+		            		<ul class="rank-1">
+							{maccms:vod num="1" start="" order="desc" by="hits"}
+		            			<li class="top topred">
+		            			<span class="num">{$key}</span>
+		            			<dl class="book-block">
+		            			<dt>
+		            				<a href="{:mac_url_vod_detail($vo)}" target="_blank">
+		            				<img class="lazyimg" data-original="{:mac_url_img($vo.vod_pic)}" src="{:mac_url_img($vo.vod_pic)}">
+									</a>
+		            			</dt>
+		            			<dd>
+		            			<a href="{:mac_url_vod_detail($vo)}" target="_blank" class="book-name">{$vo.vod_name}</a>
+		            			</dd>
+		            			</dl>
+		            			</li>
+		            		{/maccms:vod}
+							{maccms:vod num="9" start="" order="desc" by="hits"}
+		            			<li class="topred">
+		            				<span class="num">{$key}</span>
+		            				<a class="book-list-f" href="{:mac_url_vod_detail($vo)}" target="_blank">{$vo.vod_name}</a>
+		            			</li>
+		            		{/maccms:vod}
+		            			</ul>
+		            		<a href="http://demo.kyxscms.com/other/rank_hits/over/1.html" target="_blank" class="more">查看更多&gt;&gt;</a>
+		            	</div>
+		            </div>
+		            <div class="block10"></div>
+		            <div class="wrap1200 botnews">
+		            	<div class="mod-chapter-update">
+		            		<div class="hd mod-title">
+		            			<div class="title-bd">
+		            				<h2>最近更新</h2>
+		            				
+		            			</div>
+		            		</div>
+		            		<div class="bd">
+		            			<div class="list update-chapter-list" style="display: block;">
+		            				<table>
+		            					<thead>
+		            						<tr>
+		            							<th width="105">分类</th>
+		            							<th width="170">书名</th>
+		            							<th width="320">最新章节</th>
+		            							<th width="160">作者</th>
+		            							<th class="col4" align="right" width="100">更新时间</th>
+		            						</tr>
+		            					</thead>
+		            					<tbody>
+										{maccms:vod num="100" order="desc" by="time"}
+		            							<tr>
+		            							<td>
+		            								<div class="cat-name">
+		            									{$vo.type.type_name|mac_url_create='type_name'}
+		            								</div>
+		            							</td>
+		            							<td>
+		            								<div>
+		            									<a href="{:mac_url_vod_detail($vo)}" target="_blank" class="book-name"> <b>{$vo.vod_name}</b>
+		            									</a>
+		            								</div>
+		            							</td>
+		            							<td>
+		            								<div class="chapter-name">
+		            									{$vo.vod_remarks}
+		            								</div>
+		            							</td>
+		            							<td>
+		            								<div class="author">
+		            									{$vo.vod_director|mac_url_create='director'}
+		            								</div>
+		            							</td>
+		            							<td class="col4">
+		            								<div>{$vo.vod_time|date='m-d H:i',###}</div>
+		            							</td>
+		            						</tr>
+		            					{/maccms:vod}			            						
+		            								            					</tbody>
+		            				</table>
+		            			</div>
+		            		</div>
+		            	</div>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+		<div class="block20"></div>
+		<div class="footer-box show" style="clear:both;">
+	<p class="channel-font">
+		<a  target="_blank">友情连接：</a>
+				<a href="https://www.vdnnc.com" target="_blank">微度网</a>
+		{maccms:link num="10" type="all" order="asc" by="sort"}
+				<a href="{$vo.link_url}" target="_blank">{$vo.link_name}</a>
+		{/maccms:link}		
+				<br>
+	</p>
+	{include file="public/f"}
+	
+</div>
+	</body>
+
+</html>

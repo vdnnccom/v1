@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+	    <meta name="keywords" content="狂雨小说">
+	    <meta name="description" content="狂雨小说">
+	    <title>-搜索-狂雨小说</title>
+	   {include file="public/in"}
+    </head>
+	<body>
+		{include file="public/h"}
+		<div class="body-bg">
+			<div class="wrap">
+				<div class="block20"></div>
+				<div class="wrap1200 ranklist">
+					<div class="right-cont-box fl rankdata">
+						<div class="comment-r-menu">
+							<span class="titmenu">搜索结果</span>
+						</div>
+						<div class="rankdatacont search">
+						
+						{maccms:vod num="10" paging="yes" pageurl="vod/search" order="desc" by="time"}
+							<div class="secd-rank-list">
+								<dl>
+									<dt>
+										<a href="{:mac_url_vod_detail($vo)}" target="_blank">
+											<img src="" class="lazyimg" data-original="{:mac_url_img($vo.vod_pic)}">
+										</a>
+									</dt>
+									<dd>
+										<a href="h{:mac_url_vod_detail($vo)}" class="bigpic-book-name" target="_blank">{$vo.vod_name}</a>
+										<p>
+											{$vo.vod_director|mac_url_create='director'}
+											|
+											{$vo.type.type_name|mac_url_create='type_name'}
+											
+											</span>
+										</p>
+										<p class="big-book-info">{$vo.vod_blurb}</p>
+										<p>
+											<a href="{:mac_url_vod_detail($vo)}" target="_blank" class="red">{$vo.vod_remarks}</a>
+											<span>| {$vo.vod_time|date='Y-m-d H:i',###}更新</span>
+										</p>
+									</dd>
+								</dl>
+								<div class="bigbtn">
+									<a href="http://demo.kyxscms.com/novel/433.html" class="detailbtn" target="_blank">书籍详情</a>
+								</div>
+							</div>
+						{/maccms:vod}							
+							<div class="pages_bottom" style="display: block;">
+	        					<ul>
+	        						<ul class="pagination"><li class="disabled"><span>&laquo;</span></li> <li class="active"><span>1</span></li><li><a href="/search.html?keyword=&amp;page=2">2</a></li><li><a href="/search.html?keyword=&amp;page=3">3</a></li><li><a href="/search.html?keyword=&amp;page=4">4</a></li><li><a href="/search.html?keyword=&amp;page=5">5</a></li><li><a href="/search.html?keyword=&amp;page=6">6</a></li><li><a href="/search.html?keyword=&amp;page=7">7</a></li><li><a href="/search.html?keyword=&amp;page=8">8</a></li><li class="disabled"><span>...</span></li><li><a href="/search.html?keyword=&amp;page=14">14</a></li><li><a href="/search.html?keyword=&amp;page=15">15</a></li> <li><a href="/search.html?keyword=&amp;page=2">&raquo;</a></li></ul>	        					</ul>
+	        				</div>
+						</div>
+					</div>
+					<div class="search-result-r fr">
+				        <div class="titmenu">大家都看</div>
+				        				        <dl class="book-block">
+			                <dt>
+			                	<a href="http://demo.kyxscms.com/index.php/novel/118.html" target="_blank">
+			                		<img src="" class="lazyimg" data-original="http://demo.kyxscms.com/uploads/novel/20190301/c898ade030bbd19b376b6f03344956a8.jpg">
+			                	</a>
+			                </dt>
+			                <dd>
+			                    <a href="http://demo.kyxscms.com/index.php/novel/118.html" class="book-name" target="_blank">天地星尊</a>
+			                    <span class="book-author"><a href="http://demo.kyxscms.com/index.php/search/%E7%99%BD%E6%B2%99%E9%9F%A9%E5%B0%91.html" target="_blank">白沙韩少</a> | <a href="http://demo.kyxscms.com/index.php/lists/18.html" target="_blank">奇幻玄幻</a>
+
+			                    </span>
+			                    <a href="http://demo.kyxscms.com/index.php/novel/118.html" class="book-info" target="_blank">天载万物，命掌乾坤星耀之途，舍我其谁万道光芒耀仙路，唯我踏上一将枯</a>
+
+			                </dd>
+			            </dl>
+				        				        <dl class="book-block">
+			                <dt>
+			                	<a href="http://demo.kyxscms.com/index.php/novel/20.html" target="_blank">
+			                		<img src="" class="lazyimg" data-original="http://demo.kyxscms.com/uploads/novel/20190301/5dac9a1ea54e3fd7f87445a60c0840d6.jpg">
+			                	</a>
+			                </dt>
+			                <dd>
+			                    <a href="http://demo.kyxscms.com/index.php/novel/20.html" class="book-name" target="_blank">神级修炼系统</a>
+			                    <span class="book-author"><a href="http://demo.kyxscms.com/index.php/search/%E5%B0%8F%E7%9F%A5%E4%BA%86.html" target="_blank">小知了</a> | <a href="http://demo.kyxscms.com/index.php/lists/18.html" target="_blank">奇幻玄幻</a>
+
+			                    </span>
+			                    <a href="http://demo.kyxscms.com/index.php/novel/20.html" class="book-info" target="_blank">阴差阳错，秦齐与游戏系统一起穿越异界。在异界，人人凝练武魂，而秦齐的武魂竟然是游戏里十个逆天大BOSS！在异界，别人修炼千辛万苦，而秦齐却只要杀人刷怪拿经验！在异界，炼丹师是万中无一的大天才，而秦齐只需要学习一下生活职业，嗯，还有锻造师、御灵师、阵法师、厨师&hellip;&hellip;唉，好烦，干脆都学了吧。在异界，且看秦齐一路狂飙，遇神杀神遇佛杀佛，脚踩诸天圣子，坐拥绝世美人！</a>
+
+			                </dd>
+			            </dl>
+				        				        <dl class="book-block">
+			                <dt>
+			                	<a href="http://demo.kyxscms.com/index.php/novel/65.html" target="_blank">
+			                		<img src="" class="lazyimg" data-original="http://demo.kyxscms.com/uploads/novel/20190301/50825adb374802c0c6b1a214b9e603a0.jpg">
+			                	</a>
+			                </dt>
+			                <dd>
+			                    <a href="http://demo.kyxscms.com/index.php/novel/65.html" class="book-name" target="_blank">孙小鹤的探灵日记</a>
+			                    <span class="book-author"><a href="http://demo.kyxscms.com/index.php/search/%E5%AD%99%E8%87%B4%E8%BF%9C.html" target="_blank">孙致远</a> | <a href="http://demo.kyxscms.com/index.php/lists/18.html" target="_blank">奇幻玄幻</a>
+
+			                    </span>
+			                    <a href="http://demo.kyxscms.com/index.php/novel/65.html" class="book-info" target="_blank">让我用朴实的文字为你叙述一个你听说但却从未见过的现实灵异世界，但这世上，比灵异鬼怪更恐怖的故事，其实是人心。。。</a>
+
+			                </dd>
+			            </dl>
+				        				        <dl class="book-block">
+			                <dt>
+			                	<a href="http://demo.kyxscms.com/index.php/novel/363.html" target="_blank">
+			                		<img src="" class="lazyimg" data-original="http://demo.kyxscms.com/uploads/novel/20190918/690466740194b2938b9b1ca82c68f2db.jpg">
+			                	</a>
+			                </dt>
+			                <dd>
+			                    <a href="http://demo.kyxscms.com/index.php/novel/363.html" class="book-name" target="_blank">山村小神医</a>
+			                    <span class="book-author"><a href="http://demo.kyxscms.com/index.php/search/%E6%97%A0%E8%AF%AD%E7%9A%84%E8%B1%86.html" target="_blank">无语的豆</a> | <a href="http://demo.kyxscms.com/index.php/lists/25.html" target="_blank">古装言情</a>
+
+			                    </span>
+			                    <a href="http://demo.kyxscms.com/index.php/novel/363.html" class="book-info" target="_blank">&ldquo;杀手神医&rdquo;陆凡回到家乡。面对着嫂子妹妹被欺负的困境，父母大哥失踪的秘密，还有那传说中仙人的踪迹。陆凡以一手绝妙的医术和出神入化的功夫解决所有难题。可是，他本一心追求大道，为何总有许多美女环绕在身边？该怎么办？在线等！</a>
+
+			                </dd>
+			            </dl>
+				        				        <dl class="book-block">
+			                <dt>
+			                	<a href="http://demo.kyxscms.com/index.php/novel/361.html" target="_blank">
+			                		<img src="" class="lazyimg" data-original="http://demo.kyxscms.com/uploads/novel/20190918/f9377d8472017b7482855fff11956493.jpg">
+			                	</a>
+			                </dt>
+			                <dd>
+			                    <a href="http://demo.kyxscms.com/index.php/novel/361.html" class="book-name" target="_blank">天才萌宝神医娘亲</a>
+			                    <span class="book-author"><a href="http://demo.kyxscms.com/index.php/search/%E6%B2%88%E4%B8%80.html" target="_blank">沈一</a> | <a href="http://demo.kyxscms.com/index.php/lists/20.html" target="_blank">历史军事</a>
+
+			                    </span>
+			                    <a href="http://demo.kyxscms.com/index.php/novel/361.html" class="book-info" target="_blank">一朝穿越，古武世家医术奇才竟成了不安于室遭人抛尸荒野的弃妃，还没回过神来就喜当妈，萧然表示压力很大。生个萌宝，挣个神医封号，随便捡头神兽，回去报仇惹来一头狼，嗯，这个可以有，毕竟郎美勇猛身材棒。某宝：娘亲，谁是我爹爹。萧然：谁最有钱，谁就是你爹，找到你爹，记住，抱住别撒手，除非将他的遗产坑到手。</a>
+
+			                </dd>
+			            </dl>
+				        				    </div>
+				</div>
+			</div>
+		</div>
+		<div class="block20"></div>
+		<div class="footer-box show" style="clear:both;">
+	<p class="channel-font">
+		
+				<br>
+	</p>
+{include file="public/f"}
+</div>
+	</body>
+
+</html>

@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+	    <meta name="keywords" content="{$obj.vod_name}在线阅读,{$obj.vod_name}TXT下载">
+	    <meta name="description" content="{$obj.vod_name}剧情:{$obj.vod_blurb}">
+	    <title>{$obj.vod_name}详情介绍-{$obj.vod_name}在线阅读-{$obj.vod_name}TXT下载 - {$maccms.site_name}</title>
+	    {include file="public/in"}
+    </head>
+	<body>
+		{include file="public/h"}
+	<!--导航 end-->
+</div>
+		<div class="path ">
+					    <a href="/">首页</a>
+		    		    <span>&gt;</span>
+		    					    <a href="{:mac_url_type($obj.type_1)}">{$obj.type_1.type_name}</a>
+		    		    <span>&gt;</span>
+		    					    <a href="{:mac_url_type($obj.type)}">{$obj.type.type_name}</a>
+		    		    <span>&gt;</span>
+		    					    <a >{$obj.vod_name}</a>
+		    					</div>
+		<div class="work_brief clearfixer">
+			<div class="fl detailgame">
+				<div class="pic fl">
+					<span><img src="{:mac_url_img($obj.vod_pic)}" alt=""></span>
+				</div>
+				<div class="brief fl">
+					<div class="title clearfixer">
+						<span class="name fl">{$obj.vod_name}</span>
+						<div class="author fl" >{$obj.vod_director|mac_url_create='director'}</div>
+						<span class="write fl">著</span>
+					</div>
+					<div class="tags clearfixer">
+
+						
+							<span class="fl isfinish">免费</span>
+						
+						
+							<span class="fl">{$obj.type.type_name}</span>
+						
+					</div>
+					<div class="hits"> <i></i>
+						<span>318.60万 字</span> <i></i>
+						<span>访问量：{$obj.vod_hits}</span>
+						<i></i>
+						<span>评分： {$obj.vod_score_all}</span>
+					</div>
+					<p class="brief_text">{$obj.vod_blurb}… </p>
+					<div class="btns">
+						{if condition="$obj.vod_plot eq 1"}
+						<a href="{:mac_url_vod_plot($obj)}" class="free on ui_bg_bdcolor" target="_blank">马上阅读</a>
+						{/if}
+						
+						<a href="javascript:void(0);" style="cursor:hand" class="addshelf" data-type="2" data-mid="{$maccms.mid}" data-id="{$obj.vod_id}">加入书架</a>
+					</div>
+				</div>
+			</div>
+			<div class="fr detailgame_btn">
+				<img src="{$maccms.path_tpl}src/200x300.png">
+			</div>
+		</div>
+		<div class="work_content clearfixer" id="content-tab">
+			<div class="header">
+				<div class="tab fl j-content-tab">
+					<a href="#brief">
+						<span class="on">作品简介</span>
+					</a>
+					<a href="#catalog">
+						<span>目录</span>
+					</a>
+				</div>
+				
+			</div>
+			<div class="tabcontent j-content-main">
+				<div class="tabcontent-1 clearfixer">
+					<div class="column_left fl">
+						<div class="summary">
+							<pre class="summary1">{$obj.vod_content}</pre>
+						</div>
+						<div class="newchapter">
+							<div class="title clearfixer">
+								<span class="chaptername fl">
+									最新章节&nbsp;:&nbsp;&nbsp;
+									{$obj.vod_remarks}
+								</span>
+								<span class="updatetime fr">更新时间&nbsp;:&nbsp;{$obj.vod_time|date='Y-m-d H:m:s',###}</span>
+							</div>
+							<p>
+								
+							</p>
+						</div>
+						
+					</div>
+					<div class="column_right fr">
+						
+						<div class="same-recomend">
+							<div class="rec-title">同类推荐</div>
+							<ul class="rec-content ">
+								{maccms:vod num="6" type="current" order="desc" by="time"}
+								<li class="clearfixer">
+									<a href="{:mac_url_vod_detail($vo)}" class="rec-pic fl" target="_blank">
+										<img data-original="{:mac_url_img($vo.vod_pic)}" alt="" class="lazyimg" src=""></a>
+									<div class="rec-detail fl">
+										<a href="{:mac_url_vod_detail($vo)}" class="rec-con-title" target="_blank">{$vo.vod_name}</a>
+										<p class="rec-author">
+											<a >作者 : {$vo.vod_director}</a>
+										</p>
+										<p class="rec-text">{$obj.vod_blurb}… </p>
+									</div>
+								</li>
+								{/maccms:vod}								
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="wrap1200 catebg" style="display: none;">
+					<div class="cate-tit">
+						<h2>作品章节</h2>
+					</div>
+					{php}
+            //分集剧情列表分页操作
+            $__LIST__=[];
+            $__LIST__['total'] = count($obj['vod_plot_list']); //数据总数
+            $__LIST__['limit'] = 9999999; //每页条数
+            $__LIST__['page'] = $param['page']; //当前页码
+            $__LIST__['pageurl'] = mac_url_vod_plot($obj,['page' => 'PAGELINK']);
+            $__LIST__['half'] = 5; //页码显示数
+            $__PAGING__ = mac_page_param($__LIST__['total'],$__LIST__['limit'],$__LIST__['page'],$__LIST__['pageurl'],$__LIST__['half']); //获取分页数据
+            $start = (intval($param['page'])-1) * $__LIST__['limit']; //计算起始页数
+            if($start<0){
+                $start=0;
+            }
+            $vod_plot_list = array_slice($obj['vod_plot_list'],$start,$__LIST__['limit']); //获取当前页码的数据
+            {/php}
+					<div class="cate-list">
+						<ul>
+							<li>
+							{volist name="$vod_plot_list" id="vo" }
+							
+								<a target="_blank" href="/plotdetail/{$obj.vod_id}/page/{$key}.html">
+								<span class="chapter_name">{$vo.name}</span>
+								
+								</a>
+							{/volist}		            												
+							</li>
+						</ul>
+						<div class="cl"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="block20"></div>
+		<div class="footer-box show" style="clear:both;">
+	
+	{include file="public/f"}
+
+</div>
+	</body>
+	
