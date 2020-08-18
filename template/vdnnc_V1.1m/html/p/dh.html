@@ -1,0 +1,14 @@
+<ul class="menu f-cb van-hairline--bottom">
+                <li>
+                    <a href="/" class="crt">首页</a>
+                </li>
+				{maccms:type ids="parent" order="asc" by="sort"}
+                <li >
+				<a href="{:mac_url_type($vo)}">{$vo.type_name}</a>
+                </li>
+                {/maccms:type}
+				<li>
+                    <a href="http://demo.kyxscms.com/all.html" >书库</a>
+                </li>
+                
+</ul>
