@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>{$maccms.site_name}全部书库！</title>
+    <meta name="keywords" content="{$obj.type_key}" />
+    <meta name="description" content="{$obj.type_des}" />
+	    {include file="public/in"}
+    </head>
+	<body>
+		{include file="public/h"}
+		<div class="body-bg">
+		    <div class="wrap">
+		        <div class="containerbox">
+		            <div class="block10"></div>
+		        	<div class="wrap1200 ranklist">	        	
+		        		<div class="leftbar fl">
+		        			<div class="selectlist">
+		        				<div class="select selchannel">
+		        					<span class="tname">频道</span>
+		        					<ul class="textlist">
+		        					{maccms:type ids="parent" order="asc" by="sort"}	
+		        						<li class="on">
+		        							<a href="{:mac_url_type($vo)}">{$vo.type_name}</a>
+		        						</li>
+		        					{/maccms:type}	
+		        					</ul>
+		        				</div>
+		        				<div class="select selstyle">
+		        					<span class="tname">分类</span>
+		        					<ul class="textlist">
+		        					{maccms:type ids="" order="asc" by="sort" id="vo1" key="key1"}	
+									{maccms:type parent="'.$vo1['type_id'].'" order="asc" by="sort" id="vo2" key="key2"}
+										<li >
+		        							<a href="{:mac_url_type($vo2)}">{$vo2.type_name}</a>
+		        						</li>
+		        					{/maccms:type}
+									{/maccms:type}
+									
+		        					</ul>
+		        				</div>
+		        				
+		        				
+		        				
+		        			</div>
+		        		</div>
+
+		        		<div class="right-cont-box fr rankdata">
+		        			<div class="comment-r-menu">
+		        				<ul class="fl comment-status">
+		        					
+		        				</ul>
+		        			</div>
+		        			<div class="rankdatacont">
+		        				<div class="tabsbox1">
+		        					<div class="rankday">
+		        						<div class="tabsday-cont">
+		        							<div class="tab-cont-1 secd-rank-list">
+		        								<div class="listboxw">
+		        									
+													{maccms:vod num="100" order="desc" by="time"}
+													<dl>
+		        										<dt>
+		        											<a href="{:mac_url_vod_detail($vo)}" target="_blank">
+		        											<img src="" class="lazyimg" data-original="{:mac_url_img($vo.vod_pic)}">
+															</a>
+		        										</dt>
+		        										<dd>
+		        											<a href="{:mac_url_vod_detail($vo)}" target="_blank">{$vo.vod_name}</a>
+		        											<p>
+		        												{$vo.type.type_name|mac_url_create='type_name'}
+		        												|
+		        												{$vo.vod_director|mac_url_create='director'}
+		        												</p>
+		        											<p class="big-book-info">{$vo.vod_blurb}… </p>
+		        											<p>
+		        												<span href="javascript:;" target="_blank"></span>
+		        												<span class="red">{$vo.vod_remarks}</span>
+		        											</p>
+		        										</dd>
+		        									</dl>
+		        									{/maccms:vod}		        											        									
+		        <div class="line"></div>
+		        											        											        								</div>
+		        							</div>
+		        						</div>
+		        					</div>
+		        				</div>
+		        				
+								{include file="public/paging"}
+								
+		        			</div>
+		        		</div>
+		        	</div>
+		        </div>
+		    </div>
+		</div>
+		<div class="block20"></div>
+		<div class="footer-box show" style="clear:both;">
+	<br><br>
+	
+	{include file="public/f"}
+</div>
+	</body>
+	
+</html>

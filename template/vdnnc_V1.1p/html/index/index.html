@@ -17,54 +17,7 @@
 		        <div class="containerbox">
 		            <div class="block10"></div>
 		            <!--block1 start-->
-		            <div class="wrap1200">
-			            <div class="boxcont fl">
-			            	<ul class="boxlist">
-								{maccms:type ids="" order="asc" by="sort" id="vo1" key="key1"}
-			            			<li>
-			            			<a class="title" href="{:mac_url_type($vo1)}" target="_blank"><em>{$vo1.type_name}</em></a>
-									
-			            			<p class="clearfixer">
-									{maccms:type parent="'.$vo1['type_id'].'" order="asc" by="sort" id="vo2" key="key2"}
-			            			<a class="gray" href="{:mac_url_type($vo2)}" target="_blank">{$vo2.type_name}</a>
-									{/maccms:type}
-			            			</p>
-									</li>
-								{/maccms:type}	
-									
-			            	</ul>
-			            </div>
-			            <div class="w950 fr">
-			            	<div class="mod-banner">
-			            		<div class="banner-slide">
-			            			<div class="slideBox">
-										
-										
-										
-										{maccms:vod num="4" level="9" order="desc" by="time"}
-			            					
-			            				<a class="slider-film" href="{:mac_url_vod_detail($vo)}" target="_blank" style="display: none;">
-			            				<img data-original="{:mac_url_img($vo.vod_pic)}" src="{:mac_url_img($vo.vod_pic)}">
-										</a>	
-											
-			            				{/maccms:vod}	
-											</div>
-			            			
-									<div class="slide-point">
-									
-			            					<li class="slide-point-Focus"></li>
-			            					<li class="slide-point-Focus"></li>
-			            					<li class="slide-point-Focus"></li>
-			            					<li class="slide-point-Focus"></li>
-			            					
-			            			</div>
-									
-			            			<button class="prev" style="opacity: 1; display: none;"></button>
-			            			<button class="next" style="opacity: 1; display: none;"></button>
-			            		</div>
-			            	</div>
-			            </div>
-		            </div>
+		            
 		            <div class="block10"></div>
 		            <div class="wrap1200">
 		            	<div class="goodbookbox">

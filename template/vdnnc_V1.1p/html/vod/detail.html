@@ -43,7 +43,7 @@
 						
 					</div>
 					<div class="hits"> <i></i>
-						<span>318.60万 字</span> <i></i>
+						<span></span> <i></i>
 						<span>访问量：{$obj.vod_hits}</span>
 						<i></i>
 						<span>评分： {$obj.vod_score_all}</span>
@@ -54,7 +54,7 @@
 						<a href="{:mac_url_vod_plot($obj)}" class="free on ui_bg_bdcolor" target="_blank">马上阅读</a>
 						{/if}
 						
-						<a href="javascript:void(0);" style="cursor:hand" class="addshelf" data-type="2" data-mid="{$maccms.mid}" data-id="{$obj.vod_id}">加入书架</a>
+						<a href="{:mac_url_vod_play($obj,['sid'=>1,'nid'=>1])}" target="_blank" class="addshelf" >离线下载</a>
 					</div>
 				</div>
 			</div>
