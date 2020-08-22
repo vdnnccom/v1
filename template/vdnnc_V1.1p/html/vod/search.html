@@ -4,9 +4,9 @@
 	<head>
 	    <meta charset="utf-8">
 	    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-	    <meta name="keywords" content="狂雨小说">
-	    <meta name="description" content="狂雨小说">
-	    <title>-搜索-狂雨小说</title>
+	    <meta name="keywords" content="{$maccms.site_name}">
+	    <meta name="description" content="{$maccms.site_name}">
+	    <title>{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class} {$maccms.site_name}搜索结果 - {$maccms.site_name}-搜索-{$maccms.site_name}</title>
 	   {include file="public/in"}
     </head>
 	<body>
@@ -30,7 +30,7 @@
 										</a>
 									</dt>
 									<dd>
-										<a href="h{:mac_url_vod_detail($vo)}" class="bigpic-book-name" target="_blank">{$vo.vod_name}</a>
+										<a href="{:mac_url_vod_detail($vo)}" class="bigpic-book-name" target="_blank">{$vo.vod_name}</a>
 										<p>
 											{$vo.vod_director|mac_url_create='director'}
 											|

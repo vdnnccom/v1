@@ -4,16 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=no">
-	<meta name="keywords" content="{$maccms.site_keywords}">
-	<meta name="description" content="{$maccms.site_description}">
-	<title>{$maccms.site_name}</title>
+    <title>最新{$obj.type_name}-推荐{$obj.type_name}-第{$param.page}页筛选 - {$maccms.site_name}</title>
+    <meta name="keywords" content="{$obj.type_key}" />
+    <meta name="description" content="{$obj.type_des}" />
 	{include file="p/in"}
 </head>
 <body>
     <div id="app">
-        <div class="x-home">
-            <div class="x-city__header">
-                <img src="{$maccms.site_logo|mac_url_img}" alt="" class="x-city__logo">
+       <div class="x-home">
+           <div class="x-city__header">
+               <img src="{$maccms.site_logo|mac_url_img}" alt="" class="x-city__logo">
                 <div class="x-city__search" url="/label/so.html">
                     <input type="text" placeholder="请输入搜索关键字" class="x-city__search--input" disabled>
                     <img src="{$maccms.path_tpl}v1/search.png" alt="">
@@ -21,15 +21,11 @@
                                 <a class="account" href="#">帐户</a>
                             </div>
             {include file="p/dh"}
-            <div class="x-city__banner">
-                
-                <img src="{$maccms.path_tpl}v1/shadow.png" alt="" class="banner-shadow">
-            </div>
             <section class="x-city__part hr-top">
                 <div class="x-part__title">重磅推荐</div>
                 <div class="x-part__books">
                     <div class="x-part__books--cover">
-                     {maccms:vod num="3" level="1" order="desc" by="time"}   
+                     {maccms:vod num="3" level="1" paging="yes" pageurl="vod/show" order="desc" by="time"}   
 						<div class="x-book">
                             <a href="{:mac_url_vod_detail($vo)}">
                                 <div class="x-book__coverbox">
@@ -38,15 +34,15 @@
                                 <div class="x-book__text--normal">{$vo.vod_name}</div>
                             </a>
                         </div>
-                    {/maccms:vod}    
-                     </div>
+                    {/maccms:vod} 
+                    </div>
                 </div>
             </section>
             <section class="x-city__part hr-top">
                 <div class="x-part__title">大家都在看</div>
                 <div class="x-part__books">
                     <div class="x-part__books--cover">
-					{maccms:vod num="1" start="" order="desc" by="score"}
+					{maccms:vod num="6" paging="yes" pageurl="vod/show" type="current" order="desc" by="score"}                  
                         <div class="m-book-single f-cb">
                             <a href="{:mac_url_vod_detail($vo)}" title="">
                                 <img src="{:mac_url_img($vo.vod_pic)}" alt="">
@@ -55,25 +51,25 @@
                                 <p>{$vo.vod_blurb}</p>
                                 <p class="tag">
                                     <span>免费</span>
-                                    <span>{$vo.type.type_name}</span>
+                                    <span>{$obj.type_name}/{$vo.type.type_name}</span>
                                 </p>
                             </a>
                         </div>
-                    {/maccms:vod}   
-                    </div>
+                    {/maccms:vod} 
+                 </div>
                 </div>
             </section>
             <section class="x-city__part hr-top">
                 <div class="x-part__title">最近更新</div>
                 <div class="x-part__books">
                     <div class="x-city__swiper--item">
-                    {maccms:vod num="100" order="desc" by="time"}    
+                   {maccms:vod num="20" paging="yes" pageurl="vod/show" type="current" order="desc" by="time"}   
 						<div class="x-book">
                             <div class="x-book__nocover">
                                 <div class="x-book__text--multi">
                                     <p class="x-book__name">
                                     <span class="x-book__titleName"><a href="{:mac_url_vod_detail($vo)}">{$vo.vod_name}</a></span>
-                                        <span class="x-book__tag">{$vo.type.type_name}</span>
+                                        <span class="x-book__tag">{$obj.type_name}/{$vo.type.type_name}</span>
                                         <span class="x-book__tag">{$vo.vod_director}</span>
                                     </p>
                                     <p class="x-book__intro">{$vo.vod_remarks}</p>
@@ -81,8 +77,7 @@
                             </div>
                         </div>
                      {/maccms:vod}   
-						
-                </div>
+             </div>
                 </div>
             </section>
         </div>

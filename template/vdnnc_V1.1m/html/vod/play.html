@@ -1,0 +1,7 @@
+{maccms:foreach name="obj.vod_play_list" id="vo"}
+{$vo.player_info.show}-下载:[{$vo.player_info.tip}]<br><hr><br>
+{maccms:foreach name="vo.urls" id="vo2" key="key2"}
+·<a href="{$obj.vod_play_url}" target="_blank" class="addshelf" >{$vo2.name}</a><br>
+{/maccms:foreach}
+{/maccms:foreach}
+

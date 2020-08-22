@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html style="font-size: 100px;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=no">
+    <meta name="Keywords" content="" />
+    <meta name="Description" content="{$maccms.site_name}" />
+    <title>书库 - {$maccms.site_name}</title>
+	{include file="p/in"}
+</head>
+<body>
+    <div id="app">
+       <div class="x-home">
+            <div class="x-page__header van-hairline--bottom">
+                <a href="javascript:history.back();"></a>
+                <span class="x-page__title">书库</span>
+                <div class="header-menu" onclick="javascript:location.href='/';">
+                    <i class="icon-shouye-h is-active" style="font-size: 0.4rem;"></i>
+                </div>
+            </div>
+            <div class="x-page__content">
+                <div class="x-book__library">
+                    <div class="x-library__category">
+                        <div class="x-category__box">
+                            <div class="x-category__box--title">频道</div>
+                            <div class="x-category__box--list">
+                                                                <span class="x-category__item is-active"><a href="/map.html">全部</a></span>
+																{maccms:type ids="parent" order="asc" by="sort"}
+                                                                <span class="x-category__item ">
+																<a href="{:mac_url_type($vo)}">{$vo.type_name}</a>
+																</span>
+                                                                {/maccms:type}
+                                                            </div>
+                        </div>
+                                                <div class="x-category__box">
+                            <div class="x-category__box--title"></div>
+                            
+                        </div>
+                        <div class="x-category__box" style="display:none;">
+                            <div class="x-category__box--title"></div>
+                           
+                        </div>
+                        <div class="x-category__box" style="display:none;">
+                            <div class="x-category__box--title"></div>
+                          
+                        </di>
+                        <div class="x-category__box" style="display:none;">
+                            <div class="x-category__box--title">分类</div>
+                            <div class="x-category__box--list">
+                                                                    {maccms:type ids="" order="asc" by="sort" id="vo1" key="key1"}	
+																   {maccms:type parent="'.$vo1['type_id'].'" order="asc" by="sort" id="vo2" key="key2"}
+                                                                    <span class="x-category__item ">
+																	<a href="{:mac_url_type($vo2)}">{$vo2.type_name}</a>
+																	</span>
+																	{/maccms:type}
+																	{/maccms:type}
+                                                            </div>
+                        </div>
+                    </div>
+                    <div class="x-library__category--more">展开更多筛选项</div>
+					
+                    <div class="x-library__books">
+                        <div class="van-list">
+                            <span>
+							{maccms:vod num="5" order="desc" by="time"}
+                                <div class="x-book">
+                                    <div class="x-book__multi">
+                                        
+                                        <div class="x-book__coverbox">
+                                            <a href="{:mac_url_vod_detail($vo)}">
+                                                <img class="x-book__cover" src="{:mac_url_img($vo.vod_pic)}" style="width: 1.6rem; height: 2.13333rem;">
+                                            </a>
+                                        </div>
+                                        <div class="x-book__text--multi" style="width: calc(100% - 1.6rem); height: 2.13333rem;">
+                                            <a href="{:mac_url_vod_detail($vo)}">
+                                                <div class="x-book__info">
+                                                    <p class="x-book__info--name">{$vo.vod_name}</p>
+                                                    <p class="x-book__info--chapter">{$vo.vod_blurb}… </p>
+                                                    <p class="x-book__info--update">更新时间：{$vo.vod_time|date='m-d H:i',###}</p>
+                                                    <p class="x-book__info--author">
+                                                       {$vo.vod_director}
+														<span>{$vo.vod_remarks}</span>
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div> 
+                             </div>
+                                </div>
+                            {/maccms:vod}                                     
+                            </span>
+                        </div>
+                        <div class="pages_bottom" style="display: block;">
+                            
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui-line"></div>
+        {include file="p/f"}
+    </div>
+
+</body>
+</html>

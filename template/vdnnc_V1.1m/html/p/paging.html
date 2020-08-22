@@ -1,0 +1,9 @@
+
+<div class="pages_bottom" style="display: block;">
+<ul class="pager">
+{if condition="$__PAGING__.record_total gt 0"}
+<li><a href="{$__PAGING__.page_url|mac_url_page=$__PAGING__.page_prev}">&laquo;</a></li>
+<li><a href="{$__PAGING__.page_url|mac_url_page=$__PAGING__.page_next}">&raquo;</a></li>
+{/if}
+</ul>
+</div>

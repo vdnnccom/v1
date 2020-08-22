@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html style="font-size: 100px;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=no">
+    <meta name="Keywords" content="{$maccms.site_name}" />
+    <meta name="Description" content="{$maccms.site_name}" />
+    <title>{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class} {$maccms.site_name}搜索结果 - {$maccms.site_name}-搜索-{$maccms.site_name}</title>
+	{include file="p/in"}
+</head>
+<body>
+    <div id="app">
+       <div class="x-home">
+            <div class="x-page__header van-hairline--bottom">
+                <a href="javascript:history.back();"></a>
+                <span class="x-page__title">搜索</span>
+                <div class="header-menu" onclick="javascript:location.href='/';">
+                    <i class="icon-shouye-h is-active" style="font-size: 0.4rem;"></i>
+                </div>
+            </div>
+            <div class="x-page__content">
+                <div class="x-book__library">
+                    <div class="search-box">
+                        <form action="{:mac_url('vod/search')}" style="width: 85%;">
+                            <input type="text" placeholder="请输入搜索的书名" name="keyword" class="search-name">                    
+                            <img src="{$maccms.path_tpl}v1/search.png" class="search-img">
+                        </form>
+                    </div>
+                    <div class="x-library__books">
+                        <div class="van-list">
+                            <span>
+							{maccms:vod num="10" paging="yes" pageurl="vod/search" order="desc" by="time"}{/maccms:vod}
+							{maccms:vod num="10" paging="yes" pageurl="vod/search" order="desc" by="time"}
+                                <div class="x-book">
+                                    <div class="x-book__multi">
+                                        
+                                        <div class="x-book__coverbox">
+                                            <a href="{:mac_url_vod_detail($vo)}">
+                                                <img class="x-book__cover" src="{:mac_url_img($vo.vod_pic)}" style="width: 1.6rem; height: 2.13333rem;">
+                                            </a>
+                                        </div>
+                                        <div class="x-book__text--multi" style="width: calc(100% - 1.6rem); height: 2.13333rem;">
+                                            <a href="{:mac_url_vod_detail($vo)}">
+                                                <div class="x-book__nocover">
+                                                    <p class="x-book__info--name">{$vo.vod_blurb}</p>
+                                                    <div class="book-info-status">
+                                                        <span class="book-status">免费</span>
+                                                        <span class="book-wordcount">{$vo.vod_time|date='m-d H:i',###}</span>
+                                                    </div>
+                                                    <p class="x-book__intro">{$vo.vod_blurb}..</p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+							{/maccms:vod}	
+                            </span>
+                        </div>
+                        
+						{include file="p/paging"}
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html style="font-size: 100px;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=no">
+	<meta name="keywords" content="{$obj.vod_name}在线阅读,{$obj.vod_name}TXT下载">
+	<meta name="description" content="{$obj.vod_name}剧情:{$obj.vod_blurb}">
+	<title>{$obj.vod_name}详情介绍-{$obj.vod_name}在线阅读-{$obj.vod_name}TXT下载 - {$maccms.site_name}</title>
+	{include file="p/in"}
+</head>
+<body>
+    <div id="app">
+       <div class="x-home">
+            <div class="x-page__header van-hairline--bottom">
+                <a href="javascript:history.back();"></a>
+                <span class="x-page__title">{$obj.vod_name}</span>
+                <div class="header-menu" onclick="javascript:location.href='/';">
+                    <i class="icon-shouye-h is-active" style="font-size: 0.4rem;"></i>
+                </div>
+            </div>
+            <div class="x-page__content">
+                <div class="x-book__detail">
+                    <div class="x-detail__top">
+                        <div class="x-detail__book">
+                            <div class="bg-blur" style="background: url('{:mac_url_img($obj.vod_pic)}') center top / cover no-repeat;"></div>
+                            <div class="bg-blur__bg"></div>
+                            <div class="x-book">
+                                <div class="x-book__multi">
+                                    <div class="x-book__coverbox">
+                                        <img lazy="loaded" class="x-book__cover"src="{:mac_url_img($obj.vod_pic)}" style="width: 1.5rem; height: 2rem;">                    
+                                    </div>
+                                    <div class="x-book__text--multi" style="width: calc(100% - 1.5rem); height: 2rem;">
+                                        <div class="x-detail__book--info">
+                                            <p class="x-detail__info--title">{$obj.vod_name}</p>
+                                            <p class="x-detail__info--author">{$obj.vod_director}</p>
+                                            <p class="x-detail__info--words">分类：{$obj.type.type_name}</p>
+                                            <p class="x-detail__info--reads">{$obj.vod_time|date='m月d日 H:i',###}<span>更</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="x-detail__operator">
+                                <span class="x-detail__operator--item" onclick="javascript:location.href='{:mac_url_vod_play($obj,['sid'=>1,'nid'=>1])}';">离线下载</span>
+                                <span class="to-read" onclick="javascript:location.href='/plotdetail/{$obj.vod_id}/page/1.html';">开始阅读</span>
+                            </div>
+                        </div>
+                        <div class="x-detail__ticket">
+                            <div class="x-detail__ticket--box">
+                                <span onclick=digg('414','up','novel') class="x-detail__ticket--item van-hairline--right">
+                                 -   
+                                </span>
+                                <span onclick=digg('414','down','novel') class="x-detail__ticket--item van-hairline--right">
+                                 -  
+                                </span>
+                                <span class="x-detail__ticket--item">
+                                   -
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="x-detail__intro hr-bottom">
+                        <div class="x-detail__intro--content">
+                            {$obj.vod_blurb}… 
+						</div>
+                        <div class="x-detail__intro--tags">
+                                                        <span></span>
+                                                    </div>
+                    </div>
+                    <div class="x-city__part x-detail__part hr-bottom">
+                        <div class="x-part__title">
+                            目录
+                            <span class="x-catalog__total"></span>
+                            <span class="x-catalog__update">更新于：{$obj.vod_time|date='Y-m-d H:i',###}</span>
+                        </div>
+                        <div class="x-part__content">
+                            
+                                <div class="x-catalog__new">
+                                    {$obj.vod_remarks}<span>最新</span>
+                                </div>
+                            
+                            
+                            <div class="x-catalog__more">更多目录&gt;</div>
+                        </div>
+                    </div>
+                   
+                    <div class="x-city__part x-detail__part hr-bottom">
+                        <div class="x-part__title">同类作品</div>
+                        <div class="x-part__content">
+                            <div class="x-detail__part--book">
+                             {maccms:vod num="6" type="current" order="desc" by="time"}   
+								<div class="x-book" style="width: 2rem;">
+                                    <a href="{:mac_url_vod_detail($vo)}" title="">
+                                        <div class="x-book__coverbox">
+                                            <img lazy="loaded" class="x-book__cover" src="{:mac_url_img($vo.vod_pic)}" style="width: 2rem; height: 2.66667rem;">
+                                        </div>
+                                        <div class="x-book__text--normal">{$vo.vod_name}</div>
+                                    </a>
+                                </div>
+                              {/maccms:vod}   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui-line"></div>
+       {include file="p/f"}
+    </div>
+    <div class="chapter-list">
+        <div class="x-page__header van-hairline--bottom">
+            <a href="javascript:" id="chapter_back"></a>
+            <span class="x-page__title">目录</span>
+        </div>
+		{php}
+            //分集剧情列表分页操作
+            $__LIST__=[];
+            $__LIST__['total'] = count($obj['vod_plot_list']); //数据总数
+            $__LIST__['limit'] = 9999999; //每页条数
+            $__LIST__['page'] = $param['page']; //当前页码
+            $__LIST__['pageurl'] = mac_url_vod_plot($obj,['page' => 'PAGELINK']);
+            $__LIST__['half'] = 5; //页码显示数
+            $__PAGING__ = mac_page_param($__LIST__['total'],$__LIST__['limit'],$__LIST__['page'],$__LIST__['pageurl'],$__LIST__['half']); //获取分页数据
+            $start = (intval($param['page'])-1) * $__LIST__['limit']; //计算起始页数
+            if($start<0){
+                $start=0;
+            }
+            $vod_plot_list = array_slice($obj['vod_plot_list'],$start,$__LIST__['limit']); //获取当前页码的数据
+        {/php}
+        <div class="x-page__content">
+            <div class="x-catalog">
+                <div class="van-pull-refresh">
+                    <div id="wrapper" class="van-pull-refresh__track">
+                        <div class="x-catalog__list van-list">
+						{volist name="$vod_plot_list" id="vo" }
+                            <a href="/plotdetail/{$obj.vod_id}/page/{$key}.html">
+                                <p class="x-catalog__item">
+                                {$vo.name}
+								</p>
+                            </a>
+                         {/volist}   
+                                                     </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,214 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+	    <meta name="keywords" content="{$maccms.site_name}">
+	    <meta name="description" content="{$maccms.site_name}">
+	    <title>{$obj.vod_name} 在线阅读 - {$maccms.site_name}</title>
+	    <link rel="stylesheet" href="{$maccms.path_tpl}html/plot/style.css" type="text/css"/>
+	    <link rel="stylesheet" href="{$maccms.path_tpl}html/plot/font_934628_byagqjb6vae.css" type="text/css"/>
+    </head>
+    <body class="skin-default">
+    	<aside id="asideChapter" class="aside" data-is-bind-scroll="true">
+		    <i id="asideOverlay" class="aside-overlay" role="button" title="点击关闭浮层"></i>
+		    <div id="asideChapterContent" class="aside-content"></div>
+		</aside>
+	    <div id="pageRead" class="page-read ">
+	    	<content id="readContent" class="page-read-content">
+	    		<div id="readLoadPrev" class="read-load-prev">
+		            <a class="read-load-icon btn-any loading"></a>
+		            <p class="read-load-p">下拉阅读上一章</p>
+		        </div>
+	    		<article id="chapterContent" class="read-article" style="font-size: 1.125rem">
+	    			<section class="read-section jsChapterWrapper" data-chapter-id="11fa07742511f">
+	    				<h3>{$obj['vod_plot_list'][$param['page']]['name']}</h3>
+	    				{$obj['vod_plot_list'][$param['page']]['detail']}<br>
+					<br>
+					<center>
+					{if condition="$obj['vod_plot_list'][$param['page'] -1 ]['name'] neq ''"}
+		        	<a id="j_chapterPrev" href="{:mac_url_plot_detail($obj,['page'=>$param['page']-1])}">上一章</a>
+					{/if}
+		        	<span>|</span>
+					{if condition="$obj['vod_plot_list'][$param['page'] +1 ]['name'] neq ''"}
+		        	<a id="j_chapterNext" href="{:mac_url_plot_detail($obj,['page'=>$param['page']+1])}">下一章</a>
+					{/if}
+					<span>|</span>
+					<a href="{include file="p/xid"}">返回</a>
+					</center>
+						</section>
+	    		</article>
+	    		<div id="readLoadNext" class="read-load-next">
+				
+	    			<a id="aGotoBookEnd" href="#" class="btn-blank blue" style="display:none">已经是最后一章了 »</a>
+		    	</div>
+		    </content>
+		    <div class="page-read-top">
+		    	<h1 id="chapterTitle" class="read-book-name"><!--顶部广告位--></h1>
+		    </div>
+		    <mark id="readPageMark" class="read-page-mark">你刚刚阅读到这里</mark>
+		    <p id="pageNum" class="read-page-num"></p>
+	    </div>
+	    <div id="pageReadOpt" class="page-read-opt" data-settings-str="dn:d|fs:3|skin:0|vh:v" data-book-publish="0" data-sale-modes="1" data-has-sub="0">
+	    	<header class="header read-opt-header">
+	    		<a href="{include file="p/xid"}" class="header-back jsBack">
+	    			<i class="iconfont icon-previewleft"><title>返回</title></i>
+	    		</a>
+	    		<div class="header-operate">
+	    			<!-- <a id="btnPledgeTrigger" href="javascript:" class="iconfont icon-wodetuijianzhuanhongbao" title="打赏" role="button">
+	    			</a> -->
+	    			<a id="readBtnMore" href="javascript:" class="iconfont icon-dotshorizontal jsLayerTrigger" title="更多操作" data-rel="readMoreX" role="menu" aria-expanded="false">
+	    			</a>
+	    		</div>
+	    	</header>
+				    	<a href="{include file="p/xid"}"   class="read-join-sj" >查看详情</a>
+				    	<div id="readMoreX" class="read-opt-more">
+	    		<a href="/" class="read-opt-a">
+	    			<i class="iconfont icon-zhuye1"></i>
+	    			<h4>返回首页</h4>
+	    		</a>
+	    		<!-- <a href="javascript:" id="btnDownloadFreeChapters" class="read-opt-a">
+	    			<i class="iconfont icon-lixianxiazai"></i>
+	    			离线章节
+	    		</a> -->
+	    		<a href="{include file="p/xid"}" class="read-opt-a">
+	    			<i class="iconfont icon-SU"></i>
+	    			书籍详情
+	    		</a>
+	    		<a href="/map.html" class="read-opt-a">
+	    			<i class="iconfont icon-books"></i>
+	    			全部书库
+	    		</a>
+		    </div>
+		    <div id="readOptProg" class="read-opt-bot read-opt-prog">
+		    	<div class="read-prog-info">
+				{if condition="$obj['vod_plot_list'][$param['page'] -1 ]['name'] neq ''"}
+		    		<a href="{:mac_url_plot_detail($obj,['page'=>$param['page']-1])}" id="readProgPrev" class="read-prog-prev">
+		    			<i class="iconfont icon-back" aria-hidden="true"></i>
+		    			上一章
+		    		</a>
+					{/if}
+					{if condition="$obj['vod_plot_list'][$param['page'] +1 ]['name'] neq ''"}
+		    		<a href="{:mac_url_plot_detail($obj,['page'=>$param['page']+1])}" id="readProgNext" class="read-prog-next">
+		    			下一章
+		    			<i class="iconfont icon-you" aria-hidden="true"></i>
+		    		</a>
+					{/if}
+		    		<div id="readProgVal" class="read-prog-val">
+		    			<h4 class="ell"></h4>
+		    			<output role="presentation"></output>
+		    		</div>
+		    	</div>
+		    	<div class="read-prog-bar">
+		    		<input type="range" id="readProgRange" name="read-prog" min="0" max="1000" value="0">
+		    	</div>
+		    </div>
+		    <div id="readOptSet" class="read-opt-bot read-opt-set">
+		    	<div class="read-set-font">
+		    		<a href="javascript:" id="readFontDown" class="read-font-down" data-index="0" role="button">
+		    			<i class="iconfont icon-yueduye_zitijianxiao"></i>
+		    			<aria>字号变小</aria>
+		    		</a>
+		    		<a href="javascript:" id="readFontUp" class="read-font-up" data-index="1" role="button">
+		    			<i class="iconfont icon-yueduye_zitizengda"></i>
+		    			<aria>字号变大</aria>
+		    		</a>
+		    		<div class="read-font-bar">
+		    			<div class="range">
+		    				<div class="range-track">
+		    					<a class="range-thumb" role="slider" aria-valuenow="0" aria-valuemax="8" aria-valuemin="1"></a>
+		    				</div>
+		    			</div>
+		    			<input type="range" id="readFontRange" name="font-size" min="1" max="8" value="3">
+		    		</div>
+		    	</div>
+		    	<div id="readSetSkin" class="read-set-skin">
+		    		<ul class="btn-group" role="radiogroup">
+		    			<li class="btn-group-cell read-set-cell">
+		    				<input type="radio" id="skinDefault" name="skin" value="default" checked="" data-index="0" title="默认皮肤">	    
+		    				<label class="read-skin-default" for="skinDefault" title="默认皮肤">
+		    					<i class="iconfont icon-ok center"></i>
+		    				</label>
+		    			</li>
+		    			<li class="btn-group-cell read-set-cell">
+		    				<input type="radio" id="skinBlue" name="skin" value="blue"  data-index="1" title="蓝色皮肤">	    
+		    				<label class="read-skin-blue" for="skinBlue" title="蓝色皮肤">
+		    					<i class="iconfont icon-ok center"></i>
+		    				</label>
+		    			</li>
+		    			<li class="btn-group-cell read-set-cell">
+		    				<input type="radio" id="skinGreen" name="skin" value="green"  data-index="2" title="绿色皮肤">	    
+		    				<label class="read-skin-green" for="skinGreen" title="绿色皮肤">
+		    					<i class="iconfont icon-ok center"></i>
+		    				</label>
+		    			</li>
+		    			<li class="btn-group-cell read-set-cell">
+		    				<input type="radio" id="skinLight" name="skin" value="light"  data-index="3" title="浅色皮肤">	    
+		    				<label class="read-skin-light" for="skinLight" title="浅色皮肤">
+		    					<i class="iconfont icon-ok center"></i>
+		    				</label>
+		    			</li>
+		    		</ul>
+		    	</div>
+		    	
+		    </div>
+		    <footer class="read-opt-footer">
+		    	<div class="btn-group">
+		    		<a href="{include file="p/xid"}"  class="btn-group-cell" data-rel="asideChapter" role="button" aria-haspopup="true">
+		    			<i class="iconfont icon-mulu"></i>
+		    			<h4 class="read-opt-footer-h">目录</h4>
+		    		</a>
+		    		<a href="{include file="p/xid"}"  class="btn-group-cell jsLayerTrigger" data-rel="readOptProg" role="menuitem">
+		    			<i class="iconfont icon-jindutiao"></i>
+		    			<h4 class="read-opt-footer-h">进度</h4>
+		    		</a>
+		    		<a href="javascript:" id="readBtnSet" class="btn-group-cell jsLayerTrigger" data-rel="readOptSet" role="menuitem">
+		    			<i class="iconfont icon-shezhi"></i>
+		    			<h4 class="read-opt-footer-h">设置</h4>
+		    		</a>
+
+		    		<a href="javascript:" id="readBtnMode" class="btn-group-cell" data-mode="night" role="checkbox" title="日间夜间模式切换">
+		    			<i class="iconfont icon-yueliang"></i>
+		    			<h4 class="read-opt-footer-h">夜间</h4>
+		    		</a>
+		    		
+		    	</div>
+		    </footer>
+	    </div>
+    </body>
+    <script type="text/javascript" src="{$maccms.path_tpl}html/plot/zepto.min.js"></script>
+    <script type="text/javascript" src="{$maccms.path_tpl}html/plot/layer.js"></script>
+    <script type="text/javascript" src="{$maccms.path_tpl}html/plot/reader.js"></script>
+    <script type="text/javascript">
+		var book = {};
+		//书信息
+	    book.Info = {
+	        "Id":8,
+	        "Name":'6',
+	        "authorName": '7'
+	    };
+	    //页面初始化章节信息
+	    book.chapter = {
+	        //页面进入加载的章节id
+	        source_id:434,
+	        id:'9',
+	        title:'1',
+	        content:'2',
+	        //章节vip标识
+	        vipStatus : 0,
+	        //上一章id
+	        prevId :'',
+	        //下一章id
+	        nextId :'3'
+	    };
+	    book.chapterUrl = '4';
+	    book.url = '5'
+	    book.nextChapterVip = 0;
+	    book.uid = 0;
+	</script>
+    <script type="text/javascript" src="{$maccms.path_tpl}html/plot/global.js"></script>
+	<script src="{$maccms.path_tpl}html/plot/layer.js"></script>
+	<script type="text/javascript">var view={controller:"chapter",action:"index",mold:"wap"};var book_id=434,user_id=0,is_bookshelf=0,serialize=0;</script>
+	<script src="{$maccms.path_tpl}html/plot/home.js"></script>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html style="font-size: 100px;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=no">
+    <meta name="Keywords" content="{$maccms.site_name}" />
+    <meta name="Description" content="{$maccms.site_name}" />
+    <title>搜索-{$maccms.site_name}</title>
+	{include file="p/in"}
+</head>
+<body>
+    <div id="app">
+       <div class="x-home">
+            <div class="x-page__header van-hairline--bottom">
+                <a href="javascript:history.back();"></a>
+                <span class="x-page__title">搜索</span>
+                <div class="header-menu" onclick="javascript:location.href='/';">
+                    <i class="icon-shouye-h is-active" style="font-size: 0.4rem;"></i>
+                </div>
+            </div>
+            <div class="x-page__content">
+                <div class="x-book__library">
+                    <div class="search-box">
+                        <form action="{:mac_url('vod/search')}" style="width: 85%;">
+                            <input type="text" placeholder="请输入搜索的书名" name="keyword" class="search-name">                    
+                            <img src="{$maccms.path_tpl}v1/search.png" class="search-img">
+                        </form>
+                    </div>
+                    <div class="x-library__books">
+                        <div class="van-list">
+                            {maccms:foreach name=":explode(',',$maccms.search_hot)" id="vo2" key="key2"}
+							<span>
+							<a href="{:mac_url('vod/search',['wd'=>$vo2])}">{$vo2}</a>
+                            </span>
+							{/maccms:foreach}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
